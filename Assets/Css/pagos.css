@@ -1,0 +1,145 @@
+/* Variables e Identidad Visual EnglishFuture */
+:root {
+  --bg-beige: #f8f6f0;
+  --bg-card: #ffffff;
+  --primary-color: #1e3a8a;    /* Azul Institucional */
+  --primary-hover: #1e293b;
+  --accent-color: #d97706;     /* Tono Ámbar / Dorado */
+  --accent-hover: #b45309;
+  --text-dark: #334155;
+  --border-color: #e2e8f0;
+}
+
+body.bg-beige-light {
+  background-color: var(--bg-beige);
+  color: var(--text-dark);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Clases de colores personalizados */
+.text-primary-custom {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary-custom {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-light-blue {
+  background-color: #e0f2fe;
+}
+
+.bg-light-success {
+  background-color: #d1fae5;
+}
+
+.bg-light-warning {
+  background-color: #fef3c7;
+}
+
+/* Botones de acción */
+.btn-accent {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+  color: #ffffff;
+}
+
+/* Tarjetas */
+.card-custom {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+/* Estilos de Tabla */
+.table-header-custom {
+  background-color: #f1f5f9;
+  color: var(--primary-color);
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.table-header-custom th {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Badges de Estado */
+.badge-completado {
+  background-color: #d1fae5;
+  color: #065f46;
+  font-weight: 600;
+}
+
+.badge-pendiente {
+  background-color: #fef3c7;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.badge-anulado {
+  background-color: #fee2e2;
+  color: #991b1b;
+  font-weight: 600;
+}
+
+.badge-id {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+/* Estilo visual del recibo de pago */
+.receipt-box {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Configuración de Impresión para comprobantes */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #modalComprobante, 
+  #modalComprobante * {
+    visibility: visible;
+  }
+
+  #modalComprobante {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal-dialog {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .modal-content {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .receipt-box {
+    border: 1px solid #ccc !important;
+    padding: 20px !important;
+  }
+}

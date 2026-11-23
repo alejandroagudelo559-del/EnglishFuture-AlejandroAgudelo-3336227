@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - EnglishFuture</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="../../assets/css/login.css">
+</head>
+<body class="d-flex flex-column min-vh-100 body-login">
+
+    <!-- Encabezado de la interfaz de Login -->
+    <header class="bg-white shadow-sm py-3 sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Brand / Identidad -->
+            <a href="../../index.html" class="d-flex align-items-center text-decoration-none gap-2">
+                <img src="../../assets/images/Logo.jpg" alt="Logo EnglishFuture" width="45" height="45" class="rounded-circle object-fit-cover shadow-sm">
+                <span class="fs-4 fw-bold text-dark">EnglishFuture</span>
+            </a>
+            <!-- Botón de regreso al Index -->
+            <a href="../../index.html" class="btn btn-outline-primary d-flex align-items-center gap-2 rounded-pill px-3">
+                <i class="bi bi-arrow-left"></i>
+                <span class="d-none d-sm-inline">Volver al Inicio</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenido Principal: Distribución de 2 Columnas -->
+    <main class="flex-grow-1 d-flex align-items-center py-5">
+        <div class="container">
+            <div class="row g-0 shadow-lg rounded-4 overflow-hidden bg-white">
+                
+                <!-- Columna 1: Formulario de Inicio de Sesión -->
+                <div class="col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center">
+                    <div class="mb-4 text-center text-lg-start">
+                        <h2 class="fw-bold text-dark display-6 mb-1">Iniciar sesión</h2>
+                        <p class="text-muted">Ingresa tus datos para acceder a tus cursos</p>
+                    </div>
+
+                    <!-- Área de Mensajes de Validación/Error -->
+                    <div id="alert-container" class="mb-3"></div>
+
+                    <!-- Formulario -->
+                    <form id="loginForm" action="../../controllers/seguridad/login.php" method="POST" novalidate>
+                        <!-- Campo Correo Electrónico -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">Correo electrónico</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope text-muted"></i></span>
+                                <input type="email" class="form-control bg-light border-start-0" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                            </div>
+                        </div>
+
+                        <!-- Campo Contraseña con Mostrar/Ocultar -->
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label for="password" class="form-label fw-semibold mb-0">Contraseña</label>
+                                <a href="#" class="small text-primary text-decoration-none fw-medium">¿Olvidaste tu contraseña?</a>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock text-muted"></i></span>
+                                <input type="password" class="form-control bg-light border-start-0 border-end-0" id="password" name="password" placeholder="••••••••" required>
+                                <button class="btn btn-light border border-start-0" type="button" id="togglePassword">
+                                    <i class="bi bi-eye-slash text-muted" id="toggleIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Casilla: Mantener sesión iniciada -->
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label text-secondary small" for="rememberMe">
+                                Mantener la sesión iniciada en este dispositivo
+                            </label>
+                        </div>
+
+                        <!-- Botón Principal -->
+                        <button type="submit" class="btn btn-primary w-100 py-2.5 rounded-3 fw-bold text-uppercase shadow-sm mb-3">
+                            Iniciar sesión
+                        </button>
+
+                        <!-- Registro -->
+                        <div class="text-center mb-4">
+                            <span class="text-secondary small">¿No tienes una cuenta? </span>
+                            <a href="#" class="text-primary fw-bold text-decoration-none small">Registrarse</a>
+                        </div>
+
+                        <!-- Protección de Datos -->
+                        <div class="border-top pt-3 text-center">
+                            <p class="text-muted extra-small mb-0">
+                                <i class="bi bi-shield-check text-success me-1"></i>
+                                Tus datos están protegidos. Al iniciar sesión aceptas el uso y protección de tus datos personales conforme a nuestras políticas de privacidad.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Columna 2: Área Visual de Ventajas -->
+                <div class="col-lg-6 bg-primary text-white p-4 p-md-5 d-none d-lg-flex flex-column justify-content-between login-banner-bg">
+                    <div class="banner-overlay p-4 rounded-4">
+                        <span class="badge bg-warning text-dark mb-3 px-3 py-2 text-uppercase fw-bold">Aprende Inglés Hoy</span>
+                        <h3 class="fw-bold display-6 mb-3">Lleva tu fluidez al siguiente nivel con EnglishFuture</h3>
+                        <p class="lead opacity-90 mb-4">Descubre por qué miles de estudiantes logran sus metas profesionales con nuestro método interactivo.</p>
+
+                        <!-- Ventajas -->
+                        <div class="d-flex flex-column gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-white bg-opacity-20 p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
+                                    <i class="bi bi-person-video3 text-warning fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Clases en Vivo e Interactivas</h6>
+                                    <small class="opacity-75">Docentes certificados y nativos guiándote paso a paso.</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-white bg-opacity-20 p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
+                                    <i class="bi bi-clock-history text-warning fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Horarios 100% Flexibles</h6>
+                                    <small class="opacity-75">Estudia a tu propio ritmo, desde cualquier dispositivo.</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-white bg-opacity-20 p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
+                                    <i class="bi bi-patch-check-fill text-warning fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Certificación Internacional</h6>
+                                    <small class="opacity-75">Valida tus competencias comunicativas a nivel global.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4 text-white-50 small">
+                        <span>EnglishFuture Platform &copy; 2026</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Contenedor para Footer Reutilizable mediante Fetch -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts de Bootstrap 5 y Lógica de la Vista -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/login.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoría - EnglishFuture</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Estilos Personalizados de EnglishFuture -->
+    <link rel="stylesheet" href="../../assets/css/categoria.css">
+</head>
+<body class="bg-beige">
+
+    <!-- Header dinámico -->
+    <div id="header-container"></div>
+
+    <!-- Contenido Principal -->
+    <main class="container my-4">
+
+        <!-- Notificación Alert (Respuesta Visual) -->
+        <div id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1055;"></div>
+
+        <!-- Encabezado de la Sección -->
+        <div class="row align-items-center mb-4">
+            <div class="col-md-6">
+                <h1 class="fw-bold text-dark-brown">Gestión</h1>
+                <p class="text-muted mb-0">Explora, registra y administra los estudiantes y docentes activos de EnglishFuture.</p>
+            </div>
+            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                <button type="button" class="btn btn-primary-ef" data-bs-toggle="modal" data-bs-target="#modalUsuario" onclick="prepararModalRegistro()">
+                    <i class="bi bi-person-plus-fill me-2"></i>Registrar
+                </button>
+            </div>
+        </div>
+
+        <!-- Sección de Filtros y Buscador -->
+        <div class="card card-custom p-3 mb-4">
+            <div class="row g-3 align-items-center">
+                <!-- Buscador -->
+                <div class="col-lg-6 col-md-12">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" id="inputBuscar" class="form-control border-start-0 ps-0" placeholder="Buscar por documento, nombre o clase...">
+                    </div>
+                </div>
+                <!-- Filtro por Rol -->
+                <div class="col-lg-3 col-md-6">
+                    <select id="filtroRol" class="form-select">
+                        <option value="todos">Todos (Docentes y Estudiantes)</option>
+                        <option value="Docente">Docentes</option>
+                        <option value="Estudiante">Estudiantes</option>
+                    </select>
+                </div>
+                <!-- Filtro por Estado -->
+                <div class="col-lg-3 col-md-6">
+                    <select id="filtroEstado" class="form-select">
+                        <option value="todos">Todos los Estados</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Resultados -->
+        <div class="card card-custom overflow-hidden">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 custom-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Clase</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col" class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUsuarios">
+                        <!-- Contenido dinámico (viene de la base de datos) -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal Formulario (Registrar / Editar) -->
+    <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="modalUsuarioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalUsuarioLabel">Registrar Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- El registro se envía por POST a categoria.php; la edición la envía el JS en segundo plano -->
+                <form id="formUsuario" action="../../controllers/Categoria/categoria.php" method="POST">
+                    <div class="modal-body">
+                        <!-- Le indica al PHP qué operación hacer -->
+                        <input type="hidden" name="accion" value="registrar">
+                        <input type="hidden" id="usuarioId" name="id">
+
+                        <div class="mb-3">
+                            <label for="docIdentidad" class="form-label">Número de Documento</label>
+                            <input type="text" class="form-control" id="docIdentidad" name="numero_documento"
+                                   minlength="5" maxlength="30" pattern="[A-Za-z0-9]{5,30}"
+                                   title="Entre 5 y 30 caracteres, solo letras y números"
+                                   autocomplete="off" placeholder="Ej: 1234567890" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombreUsuario" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="nombreUsuario" name="nombre"
+                                   maxlength="150" autocomplete="off" placeholder="Ej: Ana María Pérez Gómez" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="claseUsuario" class="form-label">Clase</label>
+                            <input type="text" class="form-control" id="claseUsuario" name="clase" maxlength="100" placeholder="Ej: Inglés B1" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="rolUsuario" class="form-label">Tipo</label>
+                                <select class="form-select" id="rolUsuario" name="rol" required>
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Docente">Docente</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="estadoUsuario" class="form-label">Estado</label>
+                                <select class="form-select" id="estadoUsuario" name="estado" required>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary-ef">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirmación Eliminar -->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content text-center p-3">
+                <div class="modal-body">
+                    <i class="bi bi-exclamation-triangle-fill text-warning display-4 mb-3"></i>
+                    <h5 class="fw-bold">¿Confirmar eliminación?</h5>
+                    <p class="text-muted small">El usuario será removido de la lista actual.</p>
+                    <input type="hidden" id="idEliminar">
+                    <div class="d-flex justify-content-center gap-2 mt-4">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmarEliminacion()">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer dinámico -->
+    <div id="footer-container"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script Principal (v=5 para que el navegador no use la versión vieja en caché) -->
+    <script src="../../assets/js/categoria.js?v=5"></script>
+</body>
+</html>

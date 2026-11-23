@@ -1,0 +1,87 @@
+/* Variables de Color e Identidad Visual EnglishFuture */
+:root {
+  --bg-beige: #f8f6f0;
+  --bg-card: #ffffff;
+  --primary-color: #1e3a8a;    /* Azul Institucional */
+  --primary-hover: #1e293b;
+  --accent-color: #d97706;     /* Tono Dorado / Ámbar */
+  --accent-hover: #b45309;
+  --text-dark: #334155;
+  --border-color: #e2e8f0;
+}
+
+body.bg-beige-light {
+  background-color: var(--bg-beige);
+  color: var(--text-dark);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Colores personalizados */
+.text-primary-custom {
+  color: var(--primary-color);
+}
+
+.bg-primary-custom {
+  background-color: var(--primary-color) !important;
+}
+
+/* Botones con estilo propio */
+.btn-accent {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+  color: #ffffff;
+}
+
+/* Tarjetas y Contenedores */
+.card-custom {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+/* Encabezado de la Tabla */
+.table-header-custom {
+  background-color: #f1f5f9;
+  color: var(--primary-color);
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.table-header-custom th {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Badges de Estado */
+.badge-activo {
+  background-color: #d1fae5;
+  color: #065f46;
+  font-weight: 600;
+}
+
+.badge-inactivo {
+  background-color: #fee2e2;
+  color: #991b1b;
+  font-weight: 600;
+}
+
+.badge-id {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+/* Adaptación Responsive en pantallas pequeñas */
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.9rem;
+  }
+}

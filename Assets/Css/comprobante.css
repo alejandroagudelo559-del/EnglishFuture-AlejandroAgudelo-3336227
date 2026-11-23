@@ -1,0 +1,25 @@
+/* Configuración de Impresión Específica para el Comprobante */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .receipt-box, 
+  .receipt-box * {
+    visibility: visible;
+  }
+
+  .receipt-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px !important;
+  }
+}

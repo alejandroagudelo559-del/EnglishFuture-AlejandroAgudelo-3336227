@@ -1,0 +1,39 @@
+/* Color de Fondo General Beige Requerido */
+.body-login {
+    background-color: #F5F5DC !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Banner lateral visual para Login */
+.login-banner-bg {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a48b3 100%);
+    position: relative;
+}
+
+.banner-overlay {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Ajuste de fuentes y detalles pequeños */
+.extra-small {
+    font-size: 0.78rem;
+    line-height: 1.3;
+}
+
+/* Ajustes de focos en inputs de Bootstrap */
+.input-group .form-control:focus {
+    box-shadow: none;
+    border-color: #0d6efd;
+}
+
+/* Animaciones suaves en botones */
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}

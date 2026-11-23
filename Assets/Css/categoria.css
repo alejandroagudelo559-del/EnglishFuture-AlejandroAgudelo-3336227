@@ -1,0 +1,85 @@
+:root {
+    --ef-beige-bg: #FDFBF7;
+    --ef-card-bg: #FFFFFF;
+    --ef-primary: #8C6239;
+    --ef-primary-hover: #6F4E2C;
+    --ef-secondary: #EFE8DC;
+    --ef-dark-text: #3A2E2B;
+    --ef-border: #E5DDD0;
+    --ef-badge-docente: #E2F0D9;
+    --ef-badge-docente-text: #385723;
+    --ef-badge-estudiante: #DDEBF7;
+    --ef-badge-estudiante-text: #1F4E78;
+}
+
+body.bg-beige {
+    background-color: var(--ef-beige-bg);
+    color: var(--ef-dark-text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-dark-brown {
+    color: var(--ef-dark-text);
+}
+
+.card-custom {
+    background-color: var(--ef-card-bg);
+    border: 1px solid var(--ef-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.btn-primary-ef {
+    background-color: var(--ef-primary);
+    color: #FFFFFF;
+    border: none;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-ef:hover {
+    background-color: var(--ef-primary-hover);
+    color: #FFFFFF;
+}
+
+.custom-table th {
+    background-color: var(--ef-secondary);
+    color: var(--ef-dark-text);
+    font-weight: 600;
+    border-bottom: 2px solid var(--ef-border);
+    padding: 1rem;
+}
+
+.custom-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--ef-border);
+}
+
+.badge-rol-docente {
+    background-color: var(--ef-badge-docente);
+    color: var(--ef-badge-docente-text);
+    font-weight: 600;
+}
+
+.badge-rol-estudiante {
+    background-color: var(--ef-badge-estudiante);
+    color: var(--ef-badge-estudiante-text);
+    font-weight: 600;
+}
+
+.badge-status-activo {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.badge-status-inactivo {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--ef-primary);
+    box-shadow: 0 0 0 0.25rem rgba(140, 98, 57, 0.25);
+}

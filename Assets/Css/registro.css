@@ -1,0 +1,45 @@
+/* Coherencia visual con el Login y la identidad EnglishFuture */
+:root {
+    --english-beige: #F5F5DC;
+    --english-accent: #1e3d59; /* Tono institucional principal corporativo */
+}
+
+body.bg-english-beige {
+    background-color: var(--english-beige) !important;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.bg-english-accent {
+    background-color: var(--english-accent) !important;
+}
+
+/* Ajustes de tarjetas y sombras */
+.card {
+    border: none;
+    transition: all 0.3s ease;
+}
+
+/* Estilos personalizados para los inputs y botones manteniendo el estándar Bootstrap */
+.form-control:focus {
+    border-color: #438a5e;
+    box-shadow: 0 0 0 0.25rem rgba(67, 138, 94, 0.15);
+}
+
+.btn-primary {
+    background-color: #17b978;
+    border-color: #17b978;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #149d65;
+    border-color: #149d65;
+}
+
+.z-index-1 {
+    z-index: 1;
+}
+
+.backdrop-blur {
+    backdrop-filter: blur(5px);
+}
